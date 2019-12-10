@@ -158,7 +158,8 @@ def _convert_graph_model_to_graph(model_json, base_path):
 
     graph_def = _convert_graph_def(topology)
     weight_dict = _convert_weight_list_to_dict(weight_list)
-
+    with open("weights.pkl","wb") as f:
+        pickle.dump(weight_dict,f)
     return _create_graph(graph_def, weight_dict)
 
 def load_graph_model(model_dir):
